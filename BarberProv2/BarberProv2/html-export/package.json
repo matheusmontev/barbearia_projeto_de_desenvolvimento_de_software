@@ -1,0 +1,31 @@
+{
+  "name": "barberpro",
+  "version": "1.0.0",
+  "description": "Sistema de gestão para barbearias com agendamentos, controle de pagamentos e relatórios",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx live-server",
+    "deploy": "git add . && git commit -m 'Update' && git push"
+  },
+  "keywords": [
+    "barbearia",
+    "agendamento",
+    "barberpro",
+    "salao",
+    "gestao"
+  ],
+  "author": "BarberPro Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seu-usuario/barberpro.git"
+  },
+  "bugs": {
+    "url": "https://github.com/seu-usuario/barberpro/issues"
+  },
+  "homepage": "https://github.com/seu-usuario/barberpro#readme",
+  "devDependencies": {
+    "eslint": "^9.37.0"
+  }
+}

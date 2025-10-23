@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - BarberPro</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0D0D0D" stroke-width="2">
+                        <path d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z"></path>
+                    </svg>
+                </div>
+                <span class="logo-text font-montserrat">BarberPro</span>
+            </a>
+
+            <nav class="nav">
+                <a href="dashboard.html" class="active">Dashboard</a>
+                <a href="history.html">Histórico</a>
+                <a href="pricing.html">Planos</a>
+            </nav>
+
+            <button onclick="handleLogout()" class="btn btn-outline">Sair</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="pt-32 pb-20 px-4">
+        <div class="container" style="max-width: 90rem;">
+            <!-- Header -->
+            <div style="margin-bottom: 3rem;">
+                <h1 class="hero-title font-montserrat" style="margin-bottom: 1rem;">Dashboard do Barbeiro</h1>
+                <p style="font-size: 1.25rem; color: rgba(255, 255, 255, 0.6);">
+                    Gerencie sua agenda e acompanhe seus resultados
+                </p>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="grid md:grid-cols-4" style="margin-bottom: 2rem;">
+                <div class="card stat-card">
+                    <div>
+                        <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.875rem; margin-bottom: 0.5rem;">Total de Cortes</p>
+                        <p class="stat-value" id="totalCuts">38</p>
+                        <p style="color: #25D366; font-size: 0.875rem; margin-top: 0.25rem;">+<span id="growthPercentage">12</span>% este mês</p>
+                    </div>
+                    <div class="stat-icon">
+                        <svg width="28" height="28" fill="none" stroke="#EAB308" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="card stat-card">
+                    <div>
+                        <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.875rem; margin-bottom: 0.5rem;">Faturamento</p>
+                        <p class="stat-value" id="totalRevenue">R$ 1.920</p>
+                        <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.875rem; margin-top: 0.25rem;">Apenas pagamentos confirmados</p>
+                    </div>
+                    <div class="stat-icon">
+                        <svg width="28" height="28" fill="none" stroke="#EAB308" stroke-width="1.5" viewBox="0 0 24 24">
+                            <line x1="12" y1="1" x2="12" y2="23"></line>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="card stat-card">
+                    <div>
+                        <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.875rem; margin-bottom: 0.5rem;">Clientes Únicos</p>
+                        <p class="stat-value" id="uniqueClients">38</p>
+                        <p style="color: #25D366; font-size: 0.875rem; margin-top: 0.25rem;">Clientes diferentes</p>
+                    </div>
+                    <div class="stat-icon">
+                        <svg width="28" height="28" fill="none" stroke="#EAB308" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="card stat-card">
+                    <div>
+                        <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.875rem; margin-bottom: 0.5rem;">Taxa de Ocupação</p>
+                        <p class="stat-value"><span id="occupancyRate">70</span>%</p>
+                        <p style="color: #EAB308; font-size: 0.875rem; margin-top: 0.25rem;">Horário mais cheio: <span id="busiestHour">10:00</span></p>
+                    </div>
+                    <div class="stat-icon">
+                        <svg width="28" height="28" fill="none" stroke="#EAB308" stroke-width="1.5" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Grid -->
+            <div style="display: grid; grid-template-columns: 1fr; gap: 2rem;">
+                <!-- Weekly Schedule -->
+                <div class="card" style="padding: 2rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                        <h2 style="font-size: 1.5rem; color: white;">Agenda Semanal</h2>
+                    </div>
+
+                    <!-- Day Tabs -->
+                    <div style="display: flex; gap: 0.5rem; margin-bottom: 2rem; overflow-x: auto; padding-bottom: 0.5rem;">
+                        <button class="day-tab active" data-day="Segunda" onclick="switchDay('Segunda')">Seg</button>
+                        <button class="day-tab" data-day="Terça" onclick="switchDay('Terça')">Ter</button>
+                        <button class="day-tab" data-day="Quarta" onclick="switchDay('Quarta')">Qua</button>
+                        <button class="day-tab" data-day="Quinta" onclick="switchDay('Quinta')">Qui</button>
+                        <button class="day-tab" data-day="Sexta" onclick="switchDay('Sexta')">Sex</button>
+                        <button class="day-tab" data-day="Sábado" onclick="switchDay('Sábado')">Sáb</button>
+                    </div>
+
+                    <!-- Time Slots -->
+                    <div id="timeSlots" class="space-y-4">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Recent Appointments Table -->
+                <div class="card" style="padding: 2rem;">
+                    <h2 style="font-size: 1.5rem; color: white; margin-bottom: 2rem;">Agendamentos Recentes</h2>
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>Serviço</th>
+                                    <th>Dia</th>
+                                    <th>Horário</th>
+                                    <th>Pagamento</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="appointmentsTable">
+                                <!-- Populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="padding-top: 2rem;">
+                <p style="color: rgba(255, 255, 255, 0.4); font-size: 0.875rem;">
+                    © 2025 BarberPro. Todos os direitos reservados.
+                </p>
+                <div class="social-links">
+                    <a href="#">📷</a>
+                    <a href="#">📘</a>
+                    <a href="#">🐦</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        .day-tab {
+            padding: 0.75rem 1.5rem;
+            background: #0D0D0D;
+            border: 1px solid rgba(193, 154, 107, 0.2);
+            border-radius: 0.5rem;
+            color: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            transition: all 0.3s;
+            min-width: 80px;
+        }
+
+        .day-tab.active {
+            background: linear-gradient(to right, #C19A6B, #EAB308);
+            color: #0D0D0D;
+            border-color: transparent;
+        }
+
+        .day-tab:hover:not(.active) {
+            border-color: rgba(193, 154, 107, 0.4);
+        }
+
+        .time-slot {
+            padding: 1rem;
+            background: #0D0D0D;
+            border: 1px solid rgba(193, 154, 107, 0.1);
+            border-radius: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .time-slot.occupied {
+            background: linear-gradient(to right, rgba(193, 154, 107, 0.1), rgba(234, 179, 8, 0.1));
+            border-color: rgba(234, 179, 8, 0.3);
+        }
+
+        .time-slot:hover {
+            border-color: rgba(193, 154, 107, 0.3);
+        }
+
+        .slot-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .slot-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex: 1;
+        }
+
+        .slot-time {
+            color: #EAB308;
+            min-width: 60px;
+        }
+
+        .slot-actions {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+    </style>
+
+    <script src="app.js"></script>
+    <script>
+        let currentDay = 'Segunda';
+
+        function switchDay(day) {
+            currentDay = day;
+            
+            // Update active tab
+            document.querySelectorAll('.day-tab').forEach(tab => {
+                if (tab.dataset.day === day) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+
+            renderTimeSlots();
+        }
+
+        function renderTimeSlots() {
+            const timeSlots = ['09:00', '10:00', '11:00', '12:00', '14:00', '15:00', '16:00', '17:00', '18:00'];
+            const container = document.getElementById('timeSlots');
+            const dayAppointments = AppState.appointments.filter(apt => apt.day === currentDay);
+
+            container.innerHTML = timeSlots.map(time => {
+                const appointment = dayAppointments.find(apt => apt.time === time);
+                
+                if (appointment) {
+                    return `
+                        <div class="time-slot occupied">
+                            <div class="slot-content">
+                                <div class="slot-info">
+                                    <span class="slot-time">${time}</span>
+                                    <div>
+                                        <p style="color: white; margin: 0;">${appointment.client}</p>
+                                        <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.875rem; margin: 0;">${appointment.service}</p>
+                                    </div>
+                                </div>
+                                <div class="slot-actions">
+                                    <button 
+                                        onclick="togglePayment(${appointment.id})" 
+                                        class="btn btn-small ${appointment.paid ? 'btn-success' : 'btn-danger'}"
+                                    >
+                                        ${appointment.paid ? '✓ Pago' : '✗ Não Pago'}
+                                    </button>
+                                    <span class="badge badge-success">Confirmado</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    return `
+                        <div class="time-slot">
+                            <div class="slot-content">
+                                <div class="slot-info">
+                                    <span class="slot-time">${time}</span>
+                                    <span style="color: rgba(255, 255, 255, 0.4);">Disponível</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+            }).join('');
+        }
+
+        function renderAppointmentsTable() {
+            const tbody = document.getElementById('appointmentsTable');
+            tbody.innerHTML = AppState.appointments.slice(0, 10).map(apt => `
+                <tr>
+                    <td>${apt.client}</td>
+                    <td>${apt.service}</td>
+                    <td>${apt.day}</td>
+                    <td>${apt.time}</td>
+                    <td>
+                        <button 
+                            onclick="togglePayment(${apt.id})" 
+                            class="btn btn-small ${apt.paid ? 'btn-success' : 'btn-danger'}"
+                        >
+                            ${apt.paid ? '✓ Pago' : '✗ Não Pago'}
+                        </button>
+                    </td>
+                    <td>
+                        <button 
+                            onclick="cancelAppointment(${apt.id})" 
+                            class="btn btn-small"
+                            style="background: transparent; border: 1px solid #DC2626; color: #DC2626;"
+                        >
+                            Cancelar
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTimeSlots();
+            renderAppointmentsTable();
+        });
+    </script>
+</body>
+</html>

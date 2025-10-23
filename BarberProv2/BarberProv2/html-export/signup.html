@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - BarberPro</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 5rem 1rem;">
+        <div style="width: 100%; max-width: 48rem;">
+            <!-- Logo and Title -->
+            <div class="text-center" style="margin-bottom: 2rem;">
+                <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #C19A6B, #EAB308); border-radius: 1rem; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#0D0D0D" stroke-width="2">
+                        <path d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z"></path>
+                    </svg>
+                </div>
+                <h1 class="font-montserrat" style="font-size: 2.25rem; margin-bottom: 0.5rem;">Criar Conta Gratuitamente</h1>
+                <p style="color: rgba(255, 255, 255, 0.6);">Comece seu teste grátis de 7 dias. Sem cartão de crédito.</p>
+                <div style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; padding: 0.5rem 1rem; background: rgba(37, 211, 102, 0.2); border: 1px solid rgba(37, 211, 102, 0.3); border-radius: 9999px;">
+                    <span style="color: #25D366; font-size: 0.875rem;">📅 7 dias grátis para testar todas as funcionalidades</span>
+                </div>
+            </div>
+
+            <div class="card" style="padding: 2rem;">
+                <!-- Google Signup -->
+                <button onclick="handleSignup()" class="btn" style="width: 100%; background: white; color: #0D0D0D; padding: 1.5rem; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; gap: 0.75rem;">
+                    <svg width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    </svg>
+                    Cadastrar com Google
+                </button>
+
+                <div style="position: relative; margin-bottom: 1.5rem;">
+                    <div style="position: absolute; inset: 0; display: flex; align-items: center;">
+                        <div style="width: 100%; border-top: 1px solid rgba(193, 154, 107, 0.2);"></div>
+                    </div>
+                    <div style="position: relative; display: flex; justify-content: center;">
+                        <span style="background: #1A1A1A; padding: 0 1rem; color: rgba(255, 255, 255, 0.4); font-size: 0.875rem;">ou</span>
+                    </div>
+                </div>
+
+                <!-- Signup Form -->
+                <form onsubmit="handleSignup(event)">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="form-group">
+                            <label class="form-label">Nome Completo</label>
+                            <input type="text" id="name" class="form-input" placeholder="Seu nome" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">E-mail</label>
+                            <input type="email" id="email" class="form-input" placeholder="seu@email.com" required>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="form-group">
+                            <label class="form-label">Telefone/WhatsApp</label>
+                            <input type="tel" id="phone" class="form-input" placeholder="(11) 98765-4321" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Nome da Barbearia</label>
+                            <input type="text" id="barbershop" class="form-input" placeholder="Minha Barbearia" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Cidade</label>
+                        <input type="text" id="city" class="form-input" placeholder="São Paulo - SP" required>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="form-group">
+                            <label class="form-label">Senha</label>
+                            <input type="password" id="password" class="form-input" placeholder="Mínimo 6 caracteres" required minlength="6">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Confirmar Senha</label>
+                            <input type="password" id="confirmPassword" class="form-input" placeholder="Repita sua senha" required minlength="6">
+                        </div>
+                    </div>
+
+                    <div class="card" style="background: linear-gradient(to right, rgba(193, 154, 107, 0.1), rgba(234, 179, 8, 0.1)); border-color: rgba(193, 154, 107, 0.3); padding: 1rem; margin-top: 1.5rem;">
+                        <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.875rem; margin-bottom: 0.5rem;">✓ 7 dias de teste grátis</p>
+                        <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.875rem; margin-bottom: 0.5rem;">✓ Sem cartão de crédito necessário</p>
+                        <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.875rem; margin-bottom: 0.5rem;">✓ Acesso completo a todas as funcionalidades</p>
+                        <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.875rem;">✓ Cancele quando quiser</p>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1.5rem; margin-top: 1.5rem;">
+                        Criar Conta e Começar Teste Grátis
+                    </button>
+                </form>
+
+                <div style="margin-top: 1.5rem; text-center;">
+                    <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.875rem;">
+                        Já tem uma conta? 
+                        <a href="login.html" style="color: #EAB308; text-decoration: none;">Fazer login</a>
+                    </p>
+                </div>
+            </div>
+
+            <p style="text-center; color: rgba(255, 255, 255, 0.4); font-size: 0.75rem; margin-top: 2rem;">
+                Ao criar uma conta, você concorda com nossos 
+                <a href="#" style="color: #C19A6B; text-decoration: none;">Termos de Uso</a>
+                e 
+                <a href="#" style="color: #C19A6B; text-decoration: none;">Política de Privacidade</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
